@@ -1,0 +1,261 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+
+/*
+icon
+-------------------
+*/
+@font-face {
+  font-family: 'iconfont';
+  /* project id 2072505 */
+  src: url('//at.alicdn.com/t/font_2072505_e1vycux5s5.eot');
+  src: url('//at.alicdn.com/t/font_2072505_e1vycux5s5.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2072505_e1vycux5s5.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2072505_e1vycux5s5.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2072505_e1vycux5s5.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2072505_e1vycux5s5.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 36px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+
+}
+
+
+html,
+body,
+p,
+h1,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.15;
+  color: #303133;
+  background: #fff;
+
+}
+
+a {
+  text-decoration: none
+}
+
+img {
+  vertical-align: middle
+}
+
+
+/*
+layout  
+-------------------
+*/
+.site-wrapper {
+  position: relative;
+  min-width: 1180px;
+}
+
+
+/*
+navbar
+---------------------------
+*/
+.site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  z-index: 2000;
+  right: 0;
+  background-color: #17B3A3;
+
+  .site-navbar__header {
+    position: relative;
+    float: left;
+    width: 230px;
+    height: 50px;
+    overflow: hidden;
+    z-index: 2000;
+    background: #17B3A3;
+
+    .site-navbar__brand {
+      height: 50px;
+      width: 230px;
+      line-height: 50px;
+      text-align: center;
+
+      .site-navbar__brand-lg {
+        color: #fff;
+      }
+
+      //   display: table-cell;
+      //   text-transform: uppercase;
+      // white-space: nowrap;
+
+    }
+  }
+
+  .site-navbar__body {
+    height: 50px;
+    margin-left: 230px;
+    background: #fff;
+
+    .el-menu {
+      position: relative;
+      z-index: 2000;
+      height: 50px;
+      float: right;
+
+      .el-menu-item .el-dropdown-link img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        top: -5px;
+
+      }
+
+    }
+  }
+}
+
+
+
+/*
+siedbar
+--------------------------
+*/
+.site-sidebar {
+  position: fixed;
+  width: 230px;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+  overflow: hidden;
+  text-indent: 2em;
+
+  &--dark {
+    background: #263238;
+
+    .el-submenu.is-opened {
+      background-color: mix(#000, #263238, 15%);
+    }
+
+    .site-sidebar__menu.el-menu .el-menu-item.is-active {
+      color: #e8eaec
+    }
+
+    .el-menu-item,
+    .site-sidebar-inner .el-menu .el-submenu>.el-submenu__title {
+      color: #8a979e;
+
+      &:focus,
+      &:hover {
+        color: mix(#fff, #8a979e, 0.5);
+        background: mix(#fff, #263238, 15%)
+      }
+    }
+
+  }
+
+  //   background: rgba(238, 238, 238, .4);
+  .site-sidebar-inner {
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    bottom: 15px;
+
+    .el-menu {
+      height: 100%;
+      background: #263238;
+    }
+
+
+    .el-menu-item.is-active,
+    .el-submenu.is-active>.el-submenu__title {
+      // color: rgba(24, 144, 255, 1);
+      // background:rgba(230,247,255,1);
+    }
+  }
+}
+
+
+/*
+content 
+------------------------------------
+*/
+$height:230px;
+
+.site-content__wrapper {
+  position: relative;
+  margin-left: 230px;
+  padding-top: 50px;
+  background: #f1f4f5
+}
+
+.site-content {
+  position: relative;
+
+  .el-card {
+    background: #f1f4f5;
+
+    .el-card__body {
+      padding: 20px 0;
+    }
+  }
+
+  // padding: 15px;
+}
+
+
+/*
+login
+------------------
+*/
+.site-login-page {
+  .el-form {
+    .el-form-item .el-form-item__label {
+      color: #fff;
+    }
+
+    .main-button {
+      margin-left: 10%;
+      .el-form-item__content {
+        margin-top: 20px;
+      }
+    }
+  }
+
+}
+
+
+/*
+树形结构展开图标样式
+class="el-table__expand-icon"
+*/
+.menu_class{
+  .el-table__expand-icon{
+    float: left;
+  }
+}
+

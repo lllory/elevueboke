@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            number:1,
+            string:"str",
+            boolean:true,
+            undefined:undefined,
+            null:null,
+            arr:[{name:'luoli',age:'12'},1],
+            fun: ()=>{return 'function'},
+            obj:{
+                string: 'obj1',
+                func: () => 'objFunc1'
+            }
+        }    
+
+        let objCopy = obj
+        objCopy.number = 2;
+        objCopy.string = 'str1';
+        objCopy.boolean = false;
+        objCopy.arr[0].age = 22;
+        objCopy.fun = ()=>"function1";
+        objCopy.obj = {string:"obj2",func:()=>"bjfun33333"}
+
+        console.log(obj,objCopy);
+        
+
+    </script>
+</body>
+</html>
