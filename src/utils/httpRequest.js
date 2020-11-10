@@ -2,10 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs'
 import merge from 'lodash/merge'
-import {
-  log
-} from 'util';
-// import router from 'vue-router'
+import router from 'vue-router'
 // axios.defaults.baseURL = 'http://localhost:3000'
 var http = axios.create({
   timeout: 30000,
@@ -16,7 +13,7 @@ var http = axios.create({
     // token:Vue.cookie.get('token')
   },
 })
-// http.defaults.baseUrl = 'http://localhost:3000'
+http.defaults.baseUrl = 'http://localhost:9000'
 /**
  * 请求拦截
  */

@@ -11,6 +11,10 @@
       // 插件, 放置业务之前加载, 以免业务需求依赖插件时, 还未加载出错
       // 插件 - echarts
       window.SITE_CONFIG.cdnUrl + '/static/plugins/echarts-4.2.1/echarts.min.js',
+      // 插件 - ueditor
+      // window.SITE_CONFIG.cdnUrl + '/static/plugins/ueditor-1.5.0/ueditor.config.js',
+      // window.SITE_CONFIG.cdnUrl + '/static/plugins/ueditor-1.5.0/ueditor.all.min.js',
+      // window.SITE_CONFIG.cdnUrl + '/static/plugins/ueditor-1.5.0/lang/zh-cn/zh-cn.js',
       // 业务
       window.SITE_CONFIG.cdnUrl + '/static/js/manifest.js',
       window.SITE_CONFIG.cdnUrl + '/static/js/vendor.js',

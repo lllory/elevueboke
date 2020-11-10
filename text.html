@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <script>
-        let obj = {
-            number:1,
-            string:"str",
-            boolean:true,
-            undefined:undefined,
-            null:null,
-            arr:[{name:'luoli',age:'12'},1],
-            fun: ()=>{return 'function'},
-            obj:{
-                string: 'obj1',
-                func: () => 'objFunc1'
-            }
-        }    
-
-        let objCopy = obj
-        objCopy.number = 2;
-        objCopy.string = 'str1';
-        objCopy.boolean = false;
-        objCopy.arr[0].age = 22;
-        objCopy.fun = ()=>"function1";
-        objCopy.obj = {string:"obj2",func:()=>"bjfun33333"}
-
-        console.log(obj,objCopy);
-        
-
-    </script>
+    <script language="javascript">
+        function randomString(len) {
+        　　len = len || 32;
+        　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+        　　var maxPos = $chars.length;
+        　　var pwd = '';
+        　　for (i = 0; i < len; i++) {
+        　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        　　}
+        　　return pwd;
+        }
+        document.write(randomString(32));
+        </script>
 </body>
+
 </html>

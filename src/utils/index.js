@@ -1,6 +1,10 @@
-export function clearLoginInfo(){
-    sessionStorage.clear()
-    localStorage.clear()
+import Vue from 'vue'
+export function clearLoginInfo() {
+  sessionStorage.clear()
+  localStorage.clear()
+  Vue.cookie.delete('token')
+  Vue.cookie.delete('username')
+
 }
 
 /**
@@ -10,25 +14,25 @@ export function clearLoginInfo(){
  * @param {*} pid 
  */
 
-export function treeDataTranslate(data , menuId = 'id' , pid = 'parentId'){
-    var temp = []
-    var res = []
-    for (let i = 0; i < data.length; i++) {
-        temp[data[i][menuId]] = data[i];
+export function treeDataTranslate(data, menuId = 'id', pid = 'parentId') {
+  var temp = []
+  var res = []
+  for (let i = 0; i < data.length; i++) {
+    temp[data[i][menuId]] = data[i];
+  }
+  // debugger
+  for (let k = 0; k < data.length; k++) {
+    if (temp[data[k][pid]] && data[k][menuId] !== data[k][pid]) {
+      if (!temp[data[k][pid]]['children']) {
+        temp[data[k][pid]]['children'] = []
+      }
+      temp[data[k][pid]]['children'].push(data[k])
+    } else {
+      res.push(data[k])
     }
-    // debugger
-    for (let k = 0; k < data.length; k++) {
-        if(temp[data[k][pid]] && data[k][menuId] !== data[k][pid]){
-            if(!temp[data[k][pid]]['children']){
-                temp[data[k][pid]]['children'] = []
-            }
-            temp[data[k][pid]]['children'].push(data[k]) 
-        }else{
-            res.push(data[k])
-        }
-    }
-    return res
-    // debugger
+  }
+  return res
+  // debugger
 }
 
 
@@ -85,4 +89,3 @@ export function treeDataTranslate(data , menuId = 'id' , pid = 'parentId'){
 //     }
 //     sessionStorage.setItem('temp',JSON.stringify(temp))
 // }
-

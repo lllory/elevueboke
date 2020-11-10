@@ -8,6 +8,7 @@ import '@/element-ui'
 import '@/element-ui-theme'
 import '@/assets/scss/index.scss'
 import echarts from 'echarts'
+// import ueditor from 'ueditor'
 // import '@/icons'
 import httpRequest from '@/utils/httpRequest'
 import axios from 'axios'
@@ -19,6 +20,7 @@ Vue.config.productionTip = false
 
 Vue.prototype.$http = httpRequest
 Vue.prototype.$echarts = echarts
+// Vue.prototype.$ueditor = ueditor
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

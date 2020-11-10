@@ -26,14 +26,15 @@ const mainRoutes = {
   },
   children: [
     {path: '/home',component: _import('common/home'),name: 'home', meta: {title: "首页"} },
-    {path: '/test1',component: _import('modules/test/test1'),name: 'test1', meta: {title: "测试1"} },
-    {path: '/test2',component: _import('modules/test/test2'),name: 'test2', meta: {title: "测试2"}},
+    {path: '/cute-animal',component: _import('modules/animal/cute-animal'),name: 'cute-animal', meta: {title: "最萌动物"} },
+    {path: '/query-animal',component: _import('modules/animal/query-animal'),name: 'query-animal', meta: {title: "动物专场"}},
     {path: '/menu',component: _import('modules/sys/menu'),name: 'menu', meta: {title: "菜单管理"}}
 
   ],
   beforeEnter(to, from, next) {
     let token = Vue.cookie.get('token')
     let username = Vue.cookie.get('username')
+console.log(token,'token------------');
 
     if(!token || !/\S/.test(token) || !username || !/\S/.test(username)){
       clearLoginInfo()
@@ -112,9 +113,10 @@ router.beforeEach((to, from, next) => {
       }
 
     }).catch(err => {
-      router.push({
-        name: 'login'
-      })
+      // router.push({
+      //   name: 'login'
+      // })
+      next({name:'login'})
     })
   }
 

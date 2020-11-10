@@ -5,23 +5,6 @@
         <el-button  type="primary" @click="addOrUpdateHandle()">新增</el-button>
       </el-form-item>
     </el-form>
-
-    
-
-    <!-- <el-table ref='theTable' :data="dataList" style="width: 100%" row-key="menuId" border lazy loading='load' element-loading-text='数据加载中'
-      >
-      <el-table-column prop="name" label="名称" width="180">
-      </el-table-column>
-      <el-table-column prop="parentName" label="上级菜单" width="180">
-      </el-table-column>
-      <el-table-column prop="type" label="类型">
-      </el-table-column>
-      <el-table-column prop="orderNum" label="排序号">
-      </el-table-column>
-      <el-table-column prop="url" label="菜单URL">
-      </el-table-column>
-    </el-table> -->
-
     <el-table class="menu_class" :data="dataList" row-key="menuId" border style="width: 100%; " >
       <el-table-column prop="name" header-align="center" min-width="150" label="名称">
       </el-table-column>
@@ -50,7 +33,7 @@
     <!-- 弹窗, 新增 / 修改 -->
     <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
   </div>
-</template>
+</template> 
 
 <script>
   import AddOrUpdate from './menu-add-or-update'

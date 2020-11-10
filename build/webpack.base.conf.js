@@ -80,6 +80,7 @@ module.exports = {
     child_process: 'empty'
   },
   externals:{
-    echarts:'echarts'
+    echarts:'echarts',
+    mockjs:"Mock",
   }
 }
