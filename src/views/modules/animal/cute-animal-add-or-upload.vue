@@ -4,16 +4,15 @@
       <el-form-item label='标题'>
         <el-input placeholder="标题" :model='dataForm.title'></el-input>
       </el-form-item>
-
+      <el-form-item label='描述'>
+        <el-input placeholder="描述" :model='dataForm.describle'></el-input>
+      </el-form-item>
       <el-form-item label='内容'>
         <!-- <el-input hidden placeholder="内容" :model='dataForm.describle'></el-input> -->
         <div style="width: 100%;height: 40px;"></div>
-        <span id="wangEditor"></span>
+        <div id="wangEditor" ref='refwangEditor'></div>
         <!-- <editor-bar v-model="detail" :isClear="isClear" @change="change"></editor-bar> -->
       </el-form-item>
-      <!-- <el-form-item label='图片'>
-        <el-input placeholder="图片" :model='dataForm.imgUrl'></el-input>
-      </el-form-item> -->
     </el-form>
 
   </el-dialog>
@@ -78,12 +77,12 @@
           this.editor = new E(`#wangEditor`)
           this.editor.config.uploadImgServer = 'http://zxrlll.xyz/images/cuteAnimals'
           this.editor.config.customUploadImg = function (resultFiles, insertImgFn) {
-    // resultFiles 是 input 中选中的文件列表
-    // insertImgFn 是获取图片 url 后，插入到编辑器的方法
-            console.log(resultFiles,'resultFiles-----')
-    // 上传图片，返回结果，将图片插入到编辑器中
-    insertImgFn(['http://zxrlll.xyz/images/cuteAnimals/11.jpg'])
-}
+            // resultFiles 是 input 中选中的文件列表
+            // insertImgFn 是获取图片 url 后，插入到编辑器的方法
+            console.log(resultFiles, 'resultFiles-----')
+            // 上传图片，返回结果，将图片插入到编辑器中
+            insertImgFn(['http://zxrlll.xyz/images/cuteAnimals/11.jpg'])
+          }
           this.editor.config.onchange = function (newHtml) {
             console.log('change 之后最新的 html', newHtml)
           }
