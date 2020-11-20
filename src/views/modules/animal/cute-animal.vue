@@ -76,10 +76,10 @@
 
       },
       // 新增或者修改
-      addOrUpdateHandle(id) {
+      addOrUpdateHandle(row) {
         this.cuteanimaladdorupload = true
         this.$nextTick(() => {
-          this.$refs.refcuteanimaladdorupload.init(id)
+          this.$refs.refcuteanimaladdorupload.init(row)
         })
 
       },
