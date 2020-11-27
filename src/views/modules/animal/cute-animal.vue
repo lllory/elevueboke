@@ -3,10 +3,11 @@
     <el-form :model='dataForm' id="mod-form">
       <el-form-item>
         <el-button type="primary" @click='addOrUpdateHandle()'>新增</el-button>
+        <el-button type="primary" @click='getDataList()'>查询</el-button>
       </el-form-item>
     </el-form>
     <!-- <script :id="ueId" class="ueditor-box" type="text/plain" style="width: 100%; height: 260px;">hello world!</script> -->
-    <el-table id="mod-table" :height='tabHeight ? tabHeight : 320' :data='dataList' border :row-key="getRowKey">
+    <el-table id="mod-table" :height='tabHeight ? tabHeight : 320' :data='dataList' border :row-key="getRowKey" v-loading="dataListLoading">
       <el-table-column label="最萌动物管理" align="center">
         <el-table-column type="selection" header-align="center" align="center" width="50" :reserve-selection="true">
         </el-table-column>
@@ -16,8 +17,16 @@
         </el-table-column>
         <el-table-column prop="describle" header-align="center" min-width="150" label="描述">
         </el-table-column>
-        <el-table-column prop="imgUrl" header-align="center" min-width="150" label="图片路径">
+        <el-table-column prop="imgUrl" header-align="center" min-width="150" label="主页图片">
+          <template slot-scope='scope'>
+            <img :src="scope.row.imgUrl" alt="" style="width: 100px;height: 100px;">
+          </template>
         </el-table-column>
+        <!-- <el-table-column prop="content" header-align="center" min-width="150" label="动物介绍">
+          <template slot-scope='scope'>
+            <span v-html='scope.row.content'></span>
+          </template>
+        </el-table-column> -->
         <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click='addOrUpdateHandle(scope.row)'>修改</el-button>
@@ -28,7 +37,7 @@
     <el-pagination v-if="paginationShow" @size-change="sizeChangeHandle" @current-change="currentChangeHandle"
       :current-page="pageIndex" :page-sizes="[10, 20, 50, 100]" :page-size="pageSize" :total="totalPage"
       layout="total, sizes, prev, pager, next, jumper"></el-pagination>
-    <cute-animal-add-or-upload v-if='cuteanimaladdorupload' ref='refcuteanimaladdorupload'></cute-animal-add-or-upload>
+    <cute-animal-add-or-upload v-if='cuteanimaladdorupload' ref='refcuteanimaladdorupload' @refrshList='getDataList'></cute-animal-add-or-upload>
   </div>
 
 
@@ -45,11 +54,12 @@
         pageIndex: 1,
         totalPage: 0,
         paginationShow: true,
-        tabHeight: window.innerHeight - 400,
+        tabHeight: window.innerHeight - 250,
         ue: null,
         ueId: `J_ueditorBox_${new Date().getTime()}`,
         ueContent: '',
-        cuteanimaladdorupload: false
+        cuteanimaladdorupload: false,
+        dataListLoading: false,
 
       }
     },
@@ -79,7 +89,7 @@
       addOrUpdateHandle(row) {
         this.cuteanimaladdorupload = true
         this.$nextTick(() => {
-          this.$refs.refcuteanimaladdorupload.init(row)
+          this.$refs.refcuteanimaladdorupload.init(row || {})
         })
 
       },
@@ -89,6 +99,7 @@
         this.getDataList()
       },
       currentChangeHandle(val) {
+        this.dataListLoading = true
         this.pageIndex = val
         this.$http({
           url: this.$http.addUrl('/wxApi/mostAdorable/animal'),
@@ -101,10 +112,12 @@
           if (data.code === 0) {
             this.dataList = data.list
             this.totalPage = data.total
+            this.dataListLoading = false
           } else {
             this.dataList = []
             this.totalPage = 0
             this.$message.error(data.msg);
+            this.dataListLoading = false
           }
 
           //   console.log(this.dataList, 'this.dataList');

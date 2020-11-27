@@ -13,7 +13,8 @@ var http = axios.create({
     // token:Vue.cookie.get('token')
   },
 })
-http.defaults.baseUrl = 'http://123.57.200.101:9000'
+// http.defaults.baseUrl = 'http://123.57.200.101:9000'
+// http.defaults.baseUrl = 'http://localhost:9000'
 /**
  * 请求拦截
  */
